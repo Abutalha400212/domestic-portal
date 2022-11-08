@@ -9,21 +9,19 @@ const Details = () => {
   const [type, setType] = useState("");
   console.log(type);
   const details = useLoaderData();
-  const { description, price, rating, title, days, view,image } = details;
+  const { description, price, rating, title, days, view} = details;
   const handleEvent = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = user.email;
-    const date = form.date.value;
-    const visit = form.visit.value;
+    const url = form.url.value;
     const review = {
       name: name,
       email: email,
-      date: date,
-      visit: visit,
+      UserImage: url,
+      date: user.metadata.creationTime,
       reviewType: type,
-      image: image
     };
 
     fetch(`http://localhost:5000/review`, {
@@ -45,14 +43,14 @@ const Details = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200 mt-3">
-      <div className="hero-content grid lg:grid-cols-2 lg:w-11/12 mx-auto ">
-        <div className="w-full">
+      <div className="hero-content flex-col lg:flex lg:flex-row gap-10">
+        <div className="lg:w-5/12 mx-auto min-h-screen bg-slate-300 p-5 rounded-2xl">
           <h4 className="text-3xl font-bold uppercase text-center">{title}</h4>
           <p className="text-2xl font-serif text-center">
             ${price} / per person
           </p>
           <br />
-          <p>{description}</p>
+          <p className="text-justify">{description}</p>
           <br />
           <div>
             <div className="grid grid-cols-2 gap-2">
@@ -72,7 +70,7 @@ const Details = () => {
                 <FaSmile /> {rating}
               </p>
             </div>
-            <div className="w-96 mx-auto my-5">
+            <div className=" my-5">
               <button className="btn btn-primary w-full">
                 Purchase only ${price}
               </button>
@@ -80,8 +78,8 @@ const Details = () => {
           </div>
         </div>
 
-        <div className="w-full">
-          <h1 className="text-xl font-bold text-center capitalize">
+        <div className="lg:w-7/12 mx-auto bg-gray-200 p-5 rounded-xl">
+          <h1 className="text-xl font-bold text-center uppercase">
             Please enter your valuable review
           </h1>
           <form
@@ -89,63 +87,76 @@ const Details = () => {
             className=" grid md:grid-cols-2 gap-4 mt-4 p-5 rounded-lg "
           >
             <div className="w-full">
-              <div>
-                <label>Enter Your Name</label>
-                <br />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter your name"
-                  className="input input-bordered w-full "
-                />
-              </div>
+            <div className="form-control w-full">
+          <label className="input-group input-group-md">
+            <span className="w-1/4">Name</span>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name here"
+              className="input input-bordered input-md w-full"
+            />
+          </label>
+        </div>
               <br />
-              <div>
-                <label>Your Favourite Visiting place name</label>
-                <br />
-                <input
-                  type="text"
-                  name="visit"
-                  defaultValue={title}
-                  className="input input-bordered w-full uppercase "
-                />
-              </div>
+              <div className="form-control w-full">
+          <label className="input-group input-group-md">
+            <span className="w-1/4">Place</span>
+            <input
+              type="text"
+              name="title"
+             defaultValue={title}
+              placeholder="Type here"
+              className="input input-bordered input-md w-full uppercase"
+            />
+          </label>
+        </div>
               <br />
-              <div className="w-full">
-              <label className="text-lg font-bold">Please select one</label>
-              <br />
-                <select className="btn w-full"  onChange={event => setType(event.target.value)} name="" id="">
-                  <option value="Good">Good</option>
-                  <option value="Excellent">Excellent</option>
-                  <option value="Super">Super</option>
-                  <option value="Bad">Bad</option>
-                </select>
+              <div className="form-control w-full">
+                <div className="input-group w-1/2">
+                  <select
+                    onChange={(e) => setType(e.target.value)}
+                    className="select select-bordered w-full"
+                  >
+                    <option disabled selected>
+                      Ratings
+                    </option>
+                    <option value={'Good'}>Good</option>
+                    <option value={'Excellent'}>Excellent</option>
+                    <option value={'Bad'}>Bad</option>
+                  </select>
+                  <button className="btn btn-outline" disabled>
+                    Select One
+                  </button>
+                </div>
               </div>
             </div>
             <div className="w-full">
-              <div>
-                <label>Enter your Email</label>
-                <br />
-                <input
-                  type="email"
-                  name="email"
-                  defaultValue={user.email}
-                  className="input input-bordered w-full "
-                />
-              </div>
+            <div className="form-control w-full">
+          <label className="input-group input-group-md">
+            <span className="w-1/4">Email</span>
+            <input
+              type="email"
+              name="email"
+             defaultValue={user.email}
+              className="input input-bordered input-md w-full"
+            />
+          </label>
+        </div>
               <br />
-              <div>
-                <label>Review Date</label>
-                <br />
-                <input
-                  type="date"
-                  placeholder="Date"
-                  name="date"
-                  className="input input-bordered w-full "
-                />
-              </div>
+              <div className="form-control w-full">
+          <label className="input-group input-group-md">
+            <span className="w-40">Your Photo</span>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Type here"
+              className="input input-bordered input-md w-full"
+            />
+          </label>
+        </div>
               <br />
-              <div className="flex justify-end my-10">
+              <div className=" my-10">
                 <button className="btn btn-primary w-full">Submit</button>
               </div>
             </div>

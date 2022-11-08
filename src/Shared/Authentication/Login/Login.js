@@ -15,6 +15,7 @@ const Login = () => {
     const password = form.password.value;
     existUser(email,password).then(result =>{
         const user = result.user
+        console.log(user);
         navigate(from, {replace: true})
         form.reset()
         toast.success('Login successfully')

@@ -4,7 +4,7 @@ import Services from '../Services/Services';
 
 const Home = () => {
     return (
-        <div className='md:w-11/12 mx-auto'>
+        <div>
             <Carousel/>
             <Services/>
         </div>

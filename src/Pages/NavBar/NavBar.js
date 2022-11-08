@@ -17,19 +17,22 @@ const NavBar = () => {
   const navItem = (
     <>
       <li>
-        <Link className="/">Home</Link>
+        <Link to="/home">Home</Link>
       </li>
-      <li>
-        <Link>Blogs</Link>
-      </li>
+     <li>
+      <Link to='/addservice'>Add Service</Link>
+     </li>
       <li>
         <Link to="/review">Review</Link>
+      </li>
+       <li>
+        <Link>Blogs</Link>
       </li>
     </>
   );
   return (
-    <div className="mx-auto px-10 navbar bg-blue-100">
-      <div className="navbar-start">
+    <div className="mx-auto px-10 navbar bg-blue-100 ">
+      <div className="lg:navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg

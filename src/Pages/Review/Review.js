@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../layout/AuthProvider';
 import ReviewList from './ReviewList/ReviewList';
@@ -6,13 +7,30 @@ import ReviewList from './ReviewList/ReviewList';
 const Review = () => {
     const {user} = useContext(AuthContext)
     const [reviewItem,setReviewItem] = useState([])
+    const [toggle,setToggle] = useState('')
 
 useEffect(()=>{
     fetch(`http://localhost:5000/review?email=${user?.email}`)
     .then(res => res.json())
-    .then(data => setReviewItem(data))
+    .then(data => {
+        if(data.success){
+          setReviewItem(data.data)
+          setToggle(data.success)  
+        }
+        })
 },[user?.email])
-    const handleDelete =() =>{
+    const handleDelete =(id) =>{
+        fetch(`http://localhost:5000/review/${id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                const remaining = reviewItem.filter(e=> e._id !== id)
+                setReviewItem(remaining) 
+                toast.success(data.message)
+            }
+        })
 
     }
     return (
@@ -37,8 +55,8 @@ useEffect(()=>{
         
       </table>
       </div>
-      <div className={`flex ${reviewItem  && 'hidden' }`}>
-      <h1 className={`text-2xl font-serif text-center`}>Review are not found </h1>
+      <div className={` ${toggle === true && 'hidden'}`}>
+      <h1 className={`text-2xl font-serif text-center `}>Review are not found </h1>
       </div>
     </div>
     );

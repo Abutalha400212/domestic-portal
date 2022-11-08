@@ -1,11 +1,11 @@
 import React from "react";
 
 const ReviewList = ({ review, handleDelete }) => {
-  const { image, name, email, date, reviewType, _id } = review;
+  const { UserImage, name, email, date, reviewType, _id } = review;
   return (
       <tr>
         <td>
-          <img className="w-20 h-20 rounded-full" src={image} alt="" />
+          <img className="w-20 h-20 rounded-full" src={UserImage} alt="" />
         </td>
         <td>{name}</td>
         <td>{email}</td>
