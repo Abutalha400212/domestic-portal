@@ -5,18 +5,18 @@ const NavBar = () => {
   const navItem = (
     <>
       <li>
-        <Link>Home</Link>
+        <Link className="/">Home</Link>
       </li>
       <li>
         <Link>Blogs</Link>
       </li>
       <li>
-        <Link>Review</Link>
+        <Link to='/review'>Review</Link>
       </li>
     </>
   );
   return (
-    <div className="mx-auto px-10 navbar">
+    <div className="mx-auto px-10 navbar bg-blue-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,19 +42,19 @@ const NavBar = () => {
             {navItem}
           </ul>
         </div>
-        <Link>
+        <Link to='/'>
           <img className="w-28" src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 text-white font-semibold">{navItem}</ul>
+        <ul className="menu menu-horizontal p-0 text-black font-semibold">{navItem}</ul>
       </div>
       <div className="navbar-end lg:flex">
         <button className="btn btn-primary mr-3">
-          <Link>Register</Link>
+          <Link to='/signup'>Sign Up</Link>
         </button>
         <button className="btn btn-primary">
-          <Link>Login</Link>
+          <Link to='/login'>Login</Link>
         </button>
       </div>
     </div>
