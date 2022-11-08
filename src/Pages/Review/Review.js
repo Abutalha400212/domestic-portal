@@ -1,28 +1,45 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../layout/AuthProvider';
 import ReviewList from './ReviewList/ReviewList';
 
-const Review = ({events}) => {
+const Review = () => {
+    const {user} = useContext(AuthContext)
+    const [reviewItem,setReviewItem] = useState([])
+
+useEffect(()=>{
+    fetch(`http://localhost:5000/review?email=${user?.email}`)
+    .then(res => res.json())
+    .then(data => setReviewItem(data))
+},[user?.email])
     const handleDelete =() =>{
-        
+
     }
     return (
-        <div className="overflow-x-auto mt-10">
+        <div>
+        <div className="overflow-x-auto mt-10 w-11/12 mx-auto">
       <table className="table table-zebra w-full border-2 text-center">
         <thead>
           <tr>
+            <th>Place Photo</th>
             <th>Name</th>
             <th>Email ID</th>
-            <th>Registating Date</th>
-            <th>Volunteer List</th>
+            <th>Reviewed Date</th>
+            <th>Review Type</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="font-semibold">
-          {events.map((e) => (
-            <ReviewList key={e._id} e={e} handleDelete={handleDelete} />
+          {reviewItem.map((review) => (
+            <ReviewList key={review._id} review={review} handleDelete={handleDelete} />
           ))}
         </tbody>
+        
       </table>
+      </div>
+      <div className={`flex ${reviewItem  && 'hidden' }`}>
+      <h1 className={`text-2xl font-serif text-center`}>Review are not found </h1>
+      </div>
     </div>
     );
 };

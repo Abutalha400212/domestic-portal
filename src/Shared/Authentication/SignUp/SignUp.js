@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assests/logo/logo.png'
+import { AuthContext } from '../../../layout/AuthProvider';
 const SignUp = () => {
+    const {createUser,updateUserProfile} = useContext(AuthContext)
     const handleSignUp = event =>{
         event.preventDefault()
     const form = event.target
     const name = form.name.value
     const email = form.email.value
     const password = form.password.value
+createUser(email,password).then(result =>{
+    const user = result.user
+    updateUserProfile({displayName:name}).then(()=>{
+        form.reset()
+        toast.success('User name Updated')
+    })
+    .catch(err => console.log(err))
+    console.log(user);
+    toast.success('User Created successfully')
+}).catch(err => console.log(err))
+
     }
     return (
         <div className=''>

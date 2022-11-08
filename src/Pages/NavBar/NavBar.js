@@ -1,7 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assests/logo/logo.png";
+import { AuthContext } from "../../layout/AuthProvider";
 const NavBar = () => {
+  const { logout, user } = useContext(AuthContext);
+  const navigate =  useNavigate()
+  const handleLogOut = ()=>{
+    logout()
+    .then(()=>{
+      toast.success('User LogOut Successfully')
+      navigate('/home')
+    })
+    .catch(err => console.log(err))
+  }
   const navItem = (
     <>
       <li>
@@ -11,7 +23,7 @@ const NavBar = () => {
         <Link>Blogs</Link>
       </li>
       <li>
-        <Link to='/review'>Review</Link>
+        <Link to="/review">Review</Link>
       </li>
     </>
   );
@@ -42,20 +54,28 @@ const NavBar = () => {
             {navItem}
           </ul>
         </div>
-        <Link to='/'>
+        <Link to="/">
           <img className="w-28" src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 text-black font-semibold">{navItem}</ul>
+        <ul className="menu menu-horizontal p-0 text-black font-semibold">
+          {navItem}
+        </ul>
       </div>
-      <div className="navbar-end lg:flex">
-        <button className="btn btn-primary mr-3">
-          <Link to='/signup'>Sign Up</Link>
-        </button>
-        <button className="btn btn-primary">
-          <Link to='/login'>Login</Link>
-        </button>
+      <div className="navbar-end hidden lg:flex">
+        {user?.uid ? (
+          <button className="btn btn-secondary" onClick={handleLogOut}>Log Out</button>
+        ) : (
+          <>
+            <button className="btn btn-primary mr-3">
+              <Link to="/signup">Sign Up</Link>
+            </button>
+            <button className="btn btn-primary">
+              <Link to="/login">Login</Link>
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

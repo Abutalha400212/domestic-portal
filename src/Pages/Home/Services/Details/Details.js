@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { FaClock, FaMapMarkerAlt, FaSmile, FaUsers } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../../layout/AuthProvider";
 
 const Details = () => {
+  const { user } = useContext(AuthContext);
+  const [type, setType] = useState("");
+  console.log(type);
+  const details = useLoaderData();
+  const { description, price, rating, title, days, view,image } = details;
   const handleEvent = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const email = form.email.value;
-    const description = form.description.value;
+    const email = user.email;
     const date = form.date.value;
     const visit = form.visit.value;
-    console.log(name, email, description, date, visit);
+    const review = {
+      name: name,
+      email: email,
+      date: date,
+      visit: visit,
+      reviewType: type,
+      image: image
+    };
+
+    fetch(`http://localhost:5000/review`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          form.reset();
+          toast.success(data.message);
+        }
+      })
+      .catch((err) => console.log(err));
   };
-  const details = useLoaderData();
-  const { description, price, rating, title, days, view } = details;
+
   return (
     <div className="hero min-h-screen bg-base-200 mt-3">
       <div className="hero-content grid lg:grid-cols-2 lg:w-11/12 mx-auto ">
@@ -41,8 +69,7 @@ const Details = () => {
                 {view} +
               </p>
               <p className="flex justify-center items-center">
-                <FaSmile /> {" "}
-                {rating}
+                <FaSmile /> {rating}
               </p>
             </div>
             <div className="w-96 mx-auto my-5">
@@ -83,16 +110,16 @@ const Details = () => {
                   className="input input-bordered w-full uppercase "
                 />
               </div>
-
               <br />
-              <div>
-                <label>Description </label>
-                <br />
-                <textarea
-                  className="textarea textarea-info w-full"
-                  name="description"
-                  placeholder="Text your Review"
-                ></textarea>
+              <div className="w-full">
+              <label className="text-lg font-bold">Please select one</label>
+              <br />
+                <select className="btn w-full"  onChange={event => setType(event.target.value)} name="" id="">
+                  <option value="Good">Good</option>
+                  <option value="Excellent">Excellent</option>
+                  <option value="Super">Super</option>
+                  <option value="Bad">Bad</option>
+                </select>
               </div>
             </div>
             <div className="w-full">
@@ -102,7 +129,7 @@ const Details = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Enter your email"
+                  defaultValue={user.email}
                   className="input input-bordered w-full "
                 />
               </div>

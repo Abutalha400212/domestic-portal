@@ -1,12 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../layout/AuthProvider";
 
 const Login = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location?.state?.from?.pathname || "/"
+    const {existUser} = useContext(AuthContext)
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    existUser(email,password).then(result =>{
+        const user = result.user
+        navigate(from, {replace: true})
+        form.reset()
+        toast.success('Login successfully')
+        console.log(user);
+    })
   };
   return (
     <form
