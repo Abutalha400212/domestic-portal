@@ -99,6 +99,7 @@ const Details = () => {
               type="text"
               name="name"
               placeholder="Name here"
+              required
               className="input input-bordered input-md w-full"
             />
           </label>
@@ -110,6 +111,7 @@ const Details = () => {
             <input
               type="text"
               name="title"
+              required
              defaultValue={title}
               placeholder="Type here"
               className="input input-bordered input-md w-full uppercase"
@@ -143,6 +145,7 @@ const Details = () => {
             <input
               type="email"
               name="email"
+              required
              defaultValue={user.email}
               className="input input-bordered input-md w-full"
             />
@@ -155,6 +158,7 @@ const Details = () => {
             <input
               type="text"
               name="photo"
+              required
               placeholder="Photo here"
               className="input input-bordered input-md w-full"
             />

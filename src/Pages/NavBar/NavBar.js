@@ -30,6 +30,20 @@ const NavBar = () => {
       </li>
     </>
   );
+  const buttonItem = <>
+  {user?.uid ? (
+          <button className="btn btn-secondary" onClick={handleLogOut}>Log Out</button>
+        ) : (
+          <>
+            <button className="btn btn-primary mr-3 my-3">
+              <Link to="/signup">Sign Up</Link>
+            </button>
+            <button className="btn btn-primary">
+              <Link to="/login">Login</Link>
+            </button>
+          </>
+        )}
+  </>
   return (
     <div className="mx-auto px-10 navbar bg-blue-100 ">
       <div className="lg:navbar-start">
@@ -55,6 +69,7 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navItem}
+            {buttonItem}
           </ul>
         </div>
         <Link to="/">
@@ -67,18 +82,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex">
-        {user?.uid ? (
-          <button className="btn btn-secondary" onClick={handleLogOut}>Log Out</button>
-        ) : (
-          <>
-            <button className="btn btn-primary mr-3">
-              <Link to="/signup">Sign Up</Link>
-            </button>
-            <button className="btn btn-primary">
-              <Link to="/login">Login</Link>
-            </button>
-          </>
-        )}
+        {buttonItem}
       </div>
     </div>
   );

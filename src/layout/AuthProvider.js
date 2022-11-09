@@ -33,7 +33,7 @@ const [loading,setLoading] = useState(true)
     return updateProfile(auth.currentUser, name);
   };
   const logout =()=>{
-    setLoading(true)
+    localStorage.removeItem('userToken')
     return signOut(auth)
   }
   const authInfo = {

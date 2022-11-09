@@ -4,23 +4,34 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../layout/AuthProvider";
 
 const Login = () => {
-    const location = useLocation()
-    const navigate = useNavigate()
-    const from = location?.state?.from?.pathname || "/"
-    const {existUser} = useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+  const { existUser } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    existUser(email,password).then(result =>{
-        const user = result.user
-        console.log(user);
-        navigate(from, {replace: true})
-        form.reset()
-        toast.success('Login successfully')
-        console.log(user);
-    })
+    existUser(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      fetch("http://localhost:5000/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email: user.email }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+             navigate(from, { replace: true });
+          localStorage.setItem("userToken", data.token);
+          toast.success("Login successfully");
+        });
+
+      console.log(user);
+    });
   };
   return (
     <form
@@ -61,8 +72,11 @@ const Login = () => {
         <button className="btn btn-primary">Login</button>
       </div>
       <span href="/" className="label-text-alt ">
-           Don't have an account? <Link to='/signup' className='link link-hover underline'>Sign Up</Link>
-          </span>
+        Don't have an account?{" "}
+        <Link to="/signup" className="link link-hover underline">
+          Sign Up
+        </Link>
+      </span>
     </form>
   );
 };
