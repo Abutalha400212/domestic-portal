@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useHooks from "../../../Hooks/useHooks";
 import { AuthContext } from "../../../layout/AuthProvider";
 
 const Login = () => {
+  useHooks('login')
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";

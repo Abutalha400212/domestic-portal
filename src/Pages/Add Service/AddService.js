@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useHooks from "../../Hooks/useHooks";
 
 const AddService = () => {
+  useHooks('AddService')
   const navigate = useNavigate()
+
   const [duration, setDuration] = useState(0);
   const [ratings, setRatings] = useState("");
   const handleAddToService = (event) => {

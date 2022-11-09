@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assests/logo/logo.png'
+import useHooks from '../../../Hooks/useHooks';
 import { AuthContext } from '../../../layout/AuthProvider';
 const SignUp = () => {
+  useHooks('signUp')
     const {createUser,updateUserProfile} = useContext(AuthContext)
     const handleSignUp = event =>{
         event.preventDefault()

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useHooks from "../../../Hooks/useHooks";
 
 const ReviewUpdate = () => {
+  useHooks('Review Update')
 const [review,setReview] = useState({})
 const {id} = useParams()
 const navigate = useNavigate()

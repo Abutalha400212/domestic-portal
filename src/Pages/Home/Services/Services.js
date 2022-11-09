@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import useHooks from "../../../Hooks/useHooks";
 import { AuthContext } from "../../../layout/AuthProvider";
 import LoadServiceData from "./LoadServiceData";
 import './service.css'
 const Services = () => {
+  useHooks('Services')
   const {setLoading} = useContext(AuthContext)
 const [services,setServices] = useState([])
 const [limit ,setLimit] = useState(3)

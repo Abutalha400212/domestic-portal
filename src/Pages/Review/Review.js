@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import useHooks from "../../Hooks/useHooks";
 import { AuthContext } from "../../layout/AuthProvider";
 import ReviewList from "./ReviewList/ReviewList";
 
 const Review = () => {
+  useHooks('Review')
   const { user, logout } = useContext(AuthContext);
   const [reviewItem, setReviewItem] = useState([]);
   const [toggle, setToggle] = useState("");

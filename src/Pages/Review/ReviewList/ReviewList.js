@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useHooks from "../../../Hooks/useHooks";
 
 
 const ReviewList = ({ review, handleDelete }) => {
+  useHooks('Review List')
   const { UserImage, name, email, date, reviewType, _id } = review;
   return (
     <tr>
