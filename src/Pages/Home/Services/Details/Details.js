@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaClock, FaMapMarkerAlt, FaSmile, FaUsers } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../layout/AuthProvider";
 
 const Details = () => {
@@ -9,9 +9,11 @@ const Details = () => {
   const [type, setType] = useState("");
   console.log(type);
   const details = useLoaderData();
+  const navigate = useNavigate()
   const { description, price, rating, title, days, view} = details;
   const handleEvent = (event) => {
     event.preventDefault();
+    
     const form = event.target;
     const name = form.name.value;
     const email = user.email;
@@ -36,6 +38,7 @@ const Details = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          navigate('/review')
           form.reset();
           toast.success(data.message);
         }

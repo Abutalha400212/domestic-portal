@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddService = () => {
+  const navigate = useNavigate()
   const [duration, setDuration] = useState(0);
   const [ratings, setRatings] = useState("");
   const handleAddToService = (event) => {
@@ -31,6 +33,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          navigate('/home')
           form.reset();
           toast.success(data.message);
         }

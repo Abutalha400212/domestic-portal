@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../layout/AuthProvider';
 import ReviewList from './ReviewList/ReviewList';
 

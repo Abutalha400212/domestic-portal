@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../layout/AuthProvider";
 import LoadServiceData from "./LoadServiceData";
 import './service.css'
 const Services = () => {
+  const {setLoading} = useContext(AuthContext)
 const [services,setServices] = useState([])
 const [limit ,setLimit] = useState(3)
 console.log(limit);
 useEffect(()=>{
   fetch(`http://localhost:5000/service?limit=${limit}`)
   .then(res => res.json())
-  .then(data => setServices(data))
-},[limit])
+  .then(data => {
+    setLoading(false)
+    setServices(data)})
+},[limit,setLoading])
 
 
   return (
