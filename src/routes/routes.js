@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Error from "../Error/Error";
+import Funtose from "../Funtose/Funtose";
 import Main from "../layout/Main";
 import AddService from "../Pages/Add Service/AddService";
+import Blogs from "../Pages/Blogs/Blogs";
 import Home from "../Pages/Home/Home/Home"
 import Details from "../Pages/Home/Services/Details/Details";
 import Review from "../Pages/Review/Review";
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path:'/update/:id',
         element:<ReviewUpdate></ReviewUpdate>
+      },
+      {
+        path:'/blogs',
+        element:<Blogs/>
+      },
+      {
+        path:'funtose',
+        element:<Funtose/>
       }
     ],
   }

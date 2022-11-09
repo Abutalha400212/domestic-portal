@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Funtose from "../../../Funtose/Funtose";
 import useHooks from "../../../Hooks/useHooks";
 import { AuthContext } from "../../../layout/AuthProvider";
 import LoadServiceData from "./LoadServiceData";
@@ -25,7 +26,7 @@ useEffect(()=>{
       <h1 className="text-4xl uppercase font-serif">Most popular tours</h1>
     </div>
     <div className="grid lg:grid-cols-3 gap-5 ">
-    {services.map(service => <LoadServiceData key={service._id} service={service}/>)}
+    {services.map(service => <Funtose key={service._id} service={service}/>)}
    </div>
    <div className={`w-96 my-5 mx-auto ${limit !==3  && "hidden"} `}>
    <button onClick={()=> setLimit()} className={`btn btn-outline w-full `}>Show All </button>

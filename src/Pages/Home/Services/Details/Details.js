@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaClock, FaMapMarkerAlt, FaSmile, FaUsers } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import useHooks from "../../../../Hooks/useHooks";
 import { AuthContext } from "../../../../layout/AuthProvider";
 
 const Details = () => {
+  useHooks('Details')
   const { user } = useContext(AuthContext);
   const [type, setType] = useState("");
   console.log(type);
@@ -47,32 +49,32 @@ const Details = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200 mt-3">
+    <div className="hero min-h-screen bg-base-200 ">
       <div className="hero-content flex-col lg:flex lg:flex-row gap-10">
         <div className="lg:w-5/12 mx-auto min-h-screen bg-slate-300 p-5 rounded-2xl">
-          <h4 className="text-3xl font-bold uppercase text-center">{title}</h4>
-          <p className="text-2xl font-serif text-center">
+          <h4 className="text-3xl font-bold uppercase text-center flex items-center"><FaMapMarkerAlt/> {title}</h4>
+          <p className="text-2xl font-serif capitalize">
             ${price} / per person
           </p>
           <br />
           <p className="text-justify">{description}</p>
           <br />
           <div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 uppercase text-lg">
               <p className="flex justify-center items-center">
-                <FaClock />
+                <FaClock className="" />
                 {days} days
               </p>
               <p className="flex justify-center items-center">
-                <FaMapMarkerAlt />
+                <FaMapMarkerAlt className="text-blue-800" />
                 {title}
               </p>
               <p className="flex justify-center items-center">
-                <FaUsers />
+                <FaUsers className="text-blue-800" />
                 {view} +
               </p>
               <p className="flex justify-center items-center">
-                <FaSmile /> {rating}
+                <FaSmile className="text-amber-500"/>{" "} {rating}
               </p>
             </div>
             <div className=" my-5">
@@ -84,7 +86,7 @@ const Details = () => {
         </div>
 
         <div className="lg:w-7/12 mx-auto bg-gray-200 p-5 rounded-xl">
-          <h1 className="text-xl font-bold text-center uppercase">
+          <h1 className="text-xl font-bold text-center capitalize">
             Please enter your valuable review
           </h1>
           <form
