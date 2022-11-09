@@ -12,7 +12,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState({});
-
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -36,7 +36,9 @@ const AuthProvider = ({ children }) => {
     createUser,
     existUser,
     updateUserProfile,
-    logout
+    logout,
+    showModal,
+    setShowModal
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

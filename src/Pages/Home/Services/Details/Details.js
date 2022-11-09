@@ -15,11 +15,13 @@ const Details = () => {
     const form = event.target;
     const name = form.name.value;
     const email = user.email;
-    const url = form.url.value;
+    const title = form.title.value
+    const url = form.photo.value;
     const review = {
       name: name,
       email: email,
       UserImage: url,
+      title:title,
       date: user.metadata.creationTime,
       reviewType: type,
     };
@@ -150,7 +152,7 @@ const Details = () => {
             <input
               type="text"
               name="photo"
-              placeholder="Type here"
+              placeholder="Photo here"
               className="input input-bordered input-md w-full"
             />
           </label>

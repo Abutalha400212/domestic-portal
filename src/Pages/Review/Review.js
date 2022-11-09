@@ -44,7 +44,8 @@ useEffect(()=>{
             <th>Email ID</th>
             <th>Reviewed Date</th>
             <th>Review Type</th>
-            <th>Action</th>
+            <th>Update</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody className="font-semibold">
