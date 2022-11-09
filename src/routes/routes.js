@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Error from "../Error/Error";
-import Funtose from "../Funtose/Funtose";
 import Main from "../layout/Main";
 import AddService from "../Pages/Add Service/AddService";
 import Blogs from "../Pages/Blogs/Blogs";
@@ -54,10 +53,6 @@ const router = createBrowserRouter([
       {
         path:'/blogs',
         element:<Blogs/>
-      },
-      {
-        path:'funtose',
-        element:<Funtose/>
       }
     ],
   }

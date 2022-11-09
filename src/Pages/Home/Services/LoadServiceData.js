@@ -1,55 +1,59 @@
 import React from "react";
-import { FaClock, FaMapMarkerAlt, FaSmile, FaUsers } from "react-icons/fa";
+import { FaClock, FaMapMarkerAlt, FaStar, FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "react-photo-view/dist/react-photo-view.css";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "./service.css";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 const LoadServiceData = ({ service }) => {
   const { image, description, price, rating, title, days, view, _id } = service;
   return (
-    <div className="relative capitalize box-border w-full h-full">
-      <PhotoProvider >
-        <PhotoView  src={image}>
-          <img className="w-full" src={image} alt="" />
+    <div className="rounded overflow-hidden shadow-lg">
+      <PhotoProvider>
+        <PhotoView src={image}>
+        <img className="w-full" src={image} alt="Mountain"></img>
         </PhotoView>
       </PhotoProvider>
-      <div className="absolute bottom-2 right-3 text-center text-white font-sans">
-        <h4 className="flex justify-center items-center text-2xl ">
-          <FaMapMarkerAlt />
-          {title}
-        </h4>
-        <p className="text-xl  ">${price} / per person</p>
-      </div>
-      <div
-        className=" absolute p-3 right-0 top-0 left-0 w-full h-full  opacity-0 hover:opacity-100 transition duration-300 ease-in-out text-center "
-        style={{ backgroundColor: "rgba(251, 251, 251, 0.5)" }}
-      >
-        <h4 className="text-3xl font-bold uppercase">{title}</h4>
-        <p className="text-2xl font-serif ">${price} / per person</p>
-        <br />
-        <p>{description.slice(0, 200)}</p>
-        <br />
-        <div className="grid grid-cols-2 gap-2">
-          <p className="flex justify-center items-center">
-            <FaClock />
-            {days} days
-          </p>
-          <p className="flex justify-center items-center">
-            <FaMapMarkerAlt />
-            {title}
-          </p>
-          <p className="flex justify-center items-center">
-            <FaUsers />
-            {view} +
-          </p>
-          <p className="flex justify-center items-center">
-            <FaSmile />
-            {rating}
-          </p>
+      <div className="px-6 ">
+        <div className="font-bold text-xl uppercase my-2 flex items-center">
+          <FaMapMarkerAlt /> {title}
         </div>
-        <br />
-        <button className="btn btn-success">
-          <Link to={`/details/${_id}`}>Details</Link>
+        <p className="text-gray-700 text-base">{`${description.slice(0, 100)}...`} <Link className="label-text-alt link link-hover" to={`/details/${_id}`}>Read More</Link></p>
+      </div>
+      <div className="flex justify-center">
+        <span className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          #photography
+        </span>
+        <span className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          #travel
+        </span>
+        <span className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          #winter
+        </span>
+      </div>
+      <div className="grid grid-cols-2 gap-x-2">
+        <span className=" rounded-full px-3 py-1 text-md font-semibold text-gray-700 mr-2 mb-2 flex justify-center items-center">
+          <span className="text-sm mx-1">Package Price: </span> ${price}
+        </span>
+        <span className=" px-3 text-md font-semibold text-gray-700 flex items-center justify-center">
+          Duration: <FaClock className="mx-1 text-yellow-500"/>{days} days
+        </span>
+        <div className="flex justify-center">
+          <span className=" px-3 text-md font-semibold text-gray-700">Rate:</span>
+          <span className="flex justify-center items-center text-yellow-500 text-sm">
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />({rating})
+          </span>
+        </div>
+
+        <span className=" px-3 text-md font-semibold text-gray-700 flex items-center justify-center gap-1">
+          View: <FaUsers className="text-blue-800"/>{view} +
+        </span>
+      </div>
+      <div className="w-5/12 mx-auto my-3">
+        <button className="btn btn-primary w-full">
+          <Link to={`/details/${_id}`}>View Details</Link>
         </button>
       </div>
     </div>

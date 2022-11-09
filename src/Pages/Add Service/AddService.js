@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useHooks from "../../Hooks/useHooks";
+import { AuthContext } from "../../layout/AuthProvider";
 
 const AddService = () => {
-  useHooks('AddService')
-  const navigate = useNavigate()
+  const { logout } = useContext(AuthContext);
+  useHooks("AddService");
+  const navigate = useNavigate();
 
   const [duration, setDuration] = useState(0);
   const [ratings, setRatings] = useState("");
@@ -36,7 +38,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          navigate('/home')
+          navigate("/home");
           form.reset();
           toast.success(data.message);
         }
@@ -46,7 +48,9 @@ const AddService = () => {
   };
   return (
     <div className="lg:w-9/12 mx-auto mt-4 bg-slate-200 p-10 rounded-3xl">
-        <h1 className="text-3xl font-semibold text-center mb-10">You Can Add a Service of Tour </h1>
+      <h1 className="text-3xl font-semibold text-center mb-10">
+        You Can Add a Service of Tour{" "}
+      </h1>
       <form onSubmit={handleAddToService}>
         <div className=" grid lg:grid-cols-2 gap-5">
           <div className="form-control w-full">
