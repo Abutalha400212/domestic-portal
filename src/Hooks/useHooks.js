@@ -1,11 +1,9 @@
-import { useContext, useEffect } from "react"
-import { AuthContext } from "../layout/AuthProvider"
+import { useEffect } from "react"
 
 const useHooks = (title) =>{
-const {logout,auth} = useContext(AuthContext)
     useEffect(()=>{
         document.title = `${title}-Domestic Travol`
-    },[title,logout,auth])
+    },[title])
 }
 
 export default useHooks

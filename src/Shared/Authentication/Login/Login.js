@@ -24,9 +24,9 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          navigate(from, { replace: true });
           localStorage.setItem("userToken", data.token);
           toast.success("Google Login Successfully");
+          navigate(from, { replace: true });
         });
     });
   };
@@ -38,7 +38,6 @@ const Login = () => {
     const password = form.password.value;
     existUser(email, password).then((result) => {
       const user = result.user;
-      console.log(user);
       fetch("https://domestic-travel-server.vercel.app/jwt", {
         method: "POST",
         headers: {
@@ -48,9 +47,9 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          navigate(from, { replace: true });
           localStorage.setItem("userToken", data.token);
           toast.success("Login successfully");
+          navigate(from, { replace: true });
         });
 
       console.log(user);

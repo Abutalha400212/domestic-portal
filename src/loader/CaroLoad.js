@@ -1,7 +1,7 @@
 import img1 from '../assests/pictures/banner-2.jpg'
 import img2 from '../assests/pictures/banner-3.jpg'
 import img3 from '../assests/pictures/banner-1.jpg'
- const bannerData = [
+ export const bannerData = [
     {
         image: img1,
         prev: 3,
@@ -21,4 +21,3 @@ import img3 from '../assests/pictures/banner-1.jpg'
         next: 1
     }
 ]
-export default bannerData;

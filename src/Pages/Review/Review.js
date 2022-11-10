@@ -9,6 +9,7 @@ const Review = () => {
   const { user, logout } = useContext(AuthContext);
   const [reviewItem, setReviewItem] = useState([]);
 
+
   useEffect(() => {
     fetch(
       `https://domestic-travel-server.vercel.app/review?email=${user?.email}`,
@@ -20,7 +21,7 @@ const Review = () => {
     )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
-          logout();
+          return logout();
         }
         return res.json();
       })
@@ -69,7 +70,7 @@ const Review = () => {
           </tbody>
         </table>
       </div>
-      <div className={`${reviewItem.length > 0}  && "hidden"}`}>
+      <div className={`${reviewItem.length > 0 && "hidden" }`}>
         <h1 className={`text-2xl font-serif text-center `}>
           Review are not found{" "}
         </h1>

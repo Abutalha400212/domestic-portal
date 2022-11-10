@@ -1,4 +1,4 @@
-# Learn Tech 
+# Tourist
 
 A Servicing platform for Tours.
 
