@@ -1,21 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import useHooks from "../../../Hooks/useHooks";
-import { AuthContext } from "../../../layout/AuthProvider";
 import LoadServiceData from "./LoadServiceData";
 import './service.css'
 const Services = () => {
   useHooks('Services')
-  const {setLoading} = useContext(AuthContext)
 const [services,setServices] = useState([])
+console.log(services);
 const [limit ,setLimit] = useState(3)
 console.log(limit);
 useEffect(()=>{
   fetch(`http://localhost:5000/service?limit=${limit}`)
   .then(res => res.json())
   .then(data => {
-    setLoading(false)
     setServices(data)})
-},[limit,setLoading])
+},[limit])
   return (
    <div className="mt-10">
     <div className="text-center mb-4 ">
@@ -25,9 +23,12 @@ useEffect(()=>{
     <div className="grid lg:grid-cols-3 gap-5 ">
     {services.map(service => <LoadServiceData key={service._id} service={service}/>)}
    </div>
-   <div className={`w-96 my-5 mx-auto ${limit !==3  && "hidden"} `}>
+   <div className={`w-96 my-5 mx-auto ${(limit !==3 || services.length === 0) ? "hidden" : null} `}>
    <button onClick={()=> setLimit()} className={`btn btn-outline w-full `}>Show All </button>
    </div>
+   <div className={`w-5/12 mx-auto ${services.length > 0 && 'hidden'}`}>
+        <progress className="progress w-full"></progress>
+        </div>
    </div>
   );
 };

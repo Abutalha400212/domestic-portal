@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { FaClock, FaMapMarkerAlt, FaSmile, FaUsers } from "react-icons/fa";
+import { FaClock, FaEye, FaMapMarkerAlt, FaSmile} from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useHooks from "../../../../Hooks/useHooks";
 import { AuthContext } from "../../../../layout/AuthProvider";
@@ -15,7 +15,8 @@ const Details = () => {
   const { description, price, rating, title, days, view} = details;
   const handleEvent = (event) => {
     event.preventDefault();
-    
+    const date = new Date()
+  const datePiker = date[Symbol.toPrimitive]('string').split(' ')[4] 
     const form = event.target;
     const name = form.name.value;
     const email = user.email;
@@ -26,7 +27,7 @@ const Details = () => {
       email: email,
       UserImage: url,
       title:title,
-      date: user.metadata.creationTime,
+      date:(datePiker),
       reviewType: type,
     };
 
@@ -70,7 +71,7 @@ const Details = () => {
                 {title}
               </p>
               <p className="flex justify-center items-center">
-                <FaUsers className="text-blue-800" />
+                <FaEye className="text-blue-800" />
                 {view} +
               </p>
               <p className="flex justify-center items-center">

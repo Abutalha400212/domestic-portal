@@ -1,5 +1,5 @@
 import React from "react";
-import { FaClock, FaMapMarkerAlt, FaStar, FaUsers } from "react-icons/fa";
+import { FaClock, FaEye, FaMapMarkerAlt, FaStar} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -48,7 +48,7 @@ const LoadServiceData = ({ service }) => {
         </div>
 
         <span className=" px-3 text-md font-semibold text-gray-700 flex items-center justify-center gap-1">
-          View: <FaUsers className="text-blue-800"/>{view} +
+          View: <FaEye className="text-blue-800"/>{view} +
         </span>
       </div>
       <div className="w-5/12 mx-auto my-3">

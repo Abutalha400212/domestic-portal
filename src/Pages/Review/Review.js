@@ -51,7 +51,7 @@ const Review = () => {
               <th>Place Photo</th>
               <th>Name</th>
               <th>Email ID</th>
-              <th>Reviewed Date</th>
+              <th>Reviewed Time</th>
               <th>Review Type</th>
               <th>Update</th>
               <th>Delete</th>
