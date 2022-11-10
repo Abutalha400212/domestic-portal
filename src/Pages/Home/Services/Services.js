@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import useHooks from "../../../Hooks/useHooks";
 import LoadServiceData from "./LoadServiceData";
 import './service.css'
@@ -9,7 +9,7 @@ console.log(services);
 const [limit ,setLimit] = useState(3)
 console.log(limit);
 useEffect(()=>{
-  fetch(`http://localhost:5000/service?limit=${limit}`)
+  fetch(`https://domestic-travel-server.vercel.app/service?limit=${limit}`)
   .then(res => res.json())
   .then(data => {
     setServices(data)})

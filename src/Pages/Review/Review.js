@@ -8,10 +8,9 @@ const Review = () => {
   useHooks('Review')
   const { user, logout } = useContext(AuthContext);
   const [reviewItem, setReviewItem] = useState([]);
-  const [toggle, setToggle] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`, {
+    fetch(`https://domestic-travel-server.vercel.app/review?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("userToken")}`,
       },
@@ -25,12 +24,11 @@ const Review = () => {
       .then((data) => {
         if (data.success) {
           setReviewItem(data.data);
-          setToggle(data.success);
         }
       });
-  }, [user?.email]);
+  }, [user?.email,logout]);
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/review/${id}`, {
+    fetch(`https://domestic-travel-server.vercel.app/review/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -68,7 +66,7 @@ const Review = () => {
           </tbody>
         </table>
       </div>
-      <div className={` ${toggle === true && "hidden"}`}>
+      <div className={`${reviewItem.length > 0 }  && "hidden"}`}>
         <h1 className={`text-2xl font-serif text-center `}>
           Review are not found{" "}
         </h1>

@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useHooks from "../../Hooks/useHooks";
-import { AuthContext } from "../../layout/AuthProvider";
 
 const AddService = () => {
-  const { logout } = useContext(AuthContext);
   useHooks("AddService");
   const navigate = useNavigate();
 
@@ -28,7 +26,7 @@ const AddService = () => {
       description: description,
       days: parseInt(duration),
     };
-    fetch("http://localhost:5000/addservice", {
+    fetch("https://domestic-travel-server.vercel.app/addservice", {
       method: "POST",
       headers: {
         "content-type": "application/json",

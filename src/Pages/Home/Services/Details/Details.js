@@ -31,7 +31,7 @@ const Details = () => {
       reviewType: type,
     };
 
-    fetch(`http://localhost:5000/review`, {
+    fetch(`https://domestic-travel-server.vercel.app/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

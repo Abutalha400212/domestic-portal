@@ -13,7 +13,7 @@ const navigate = useNavigate()
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/update/${id}`)
+        fetch(`https://domestic-travel-server.vercel.app/update/${id}`)
           .then((res) => res.json())
           .then((data) => {
             setReview(data)
@@ -40,7 +40,7 @@ const UpdeteReview = {
   UserImage: url,
   title:title,
 }
-fetch(`http://localhost:5000/update/${id}`,{
+fetch(`https://domestic-travel-server.vercel.app/update/${id}`,{
     method:'PATCH',
     headers:{
         'content-type':'application/json'

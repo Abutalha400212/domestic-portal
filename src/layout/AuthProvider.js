@@ -26,7 +26,7 @@ const googlePopup= ()=>{
       setLoading(false)
     });
     return () => unsubscribe();
-  }, []);
+  }, [auth]);
   const existUser = (email, password) => {
     setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
@@ -44,6 +44,7 @@ const googlePopup= ()=>{
     return signOut(auth)
   }
   const authInfo = {
+    auth,
     user,
     createUser,
     existUser,

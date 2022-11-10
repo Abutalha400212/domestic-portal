@@ -15,7 +15,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googlePopup().then((result) => {
       const user = result.user;
-      fetch("http://localhost:5000/jwt", {
+      fetch("https://domestic-travel-server.vercel.app/jwt", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -40,7 +40,7 @@ const Login = () => {
     existUser(email, password).then((result) => {
       const user = result.user;
       console.log(user);
-      fetch("http://localhost:5000/jwt", {
+      fetch("https://domestic-travel-server.vercel.app/jwt", {
         method: "POST",
         headers: {
           "content-type": "application/json",
