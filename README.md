@@ -7,7 +7,6 @@ A Servicing platform for Tours.
 Hosted in Firebase -> [Tour Int.](https://tourist-e95ee.web.app/)
 
 ## Context API
-
 Documentation Link -> [Link](https://reactjs.org/docs/context.html#api)
 
 ## React Router Dom v6.4 

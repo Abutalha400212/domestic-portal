@@ -2,9 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useHooks from "../../../Hooks/useHooks";
 
-
 const ReviewList = ({ review, handleDelete }) => {
-  useHooks('Review List')
+  useHooks("Review List");
   const { UserImage, name, email, date, reviewType, _id } = review;
   return (
     <tr>
@@ -16,10 +15,8 @@ const ReviewList = ({ review, handleDelete }) => {
       <td>{date}</td>
       <td>{reviewType}</td>
       <td>
-        <button
-          className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        >
-         <Link to={`/update/${_id}`}> Update </Link>
+        <button className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          <Link to={`/update/${_id}`}> Update </Link>
         </button>
       </td>
       <td>

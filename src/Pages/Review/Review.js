@@ -5,16 +5,19 @@ import { AuthContext } from "../../layout/AuthProvider";
 import ReviewList from "./ReviewList/ReviewList";
 
 const Review = () => {
-  useHooks('Review')
+  useHooks("Review");
   const { user, logout } = useContext(AuthContext);
   const [reviewItem, setReviewItem] = useState([]);
 
   useEffect(() => {
-    fetch(`https://domestic-travel-server.vercel.app/review?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("userToken")}`,
-      },
-    })
+    fetch(
+      `https://domestic-travel-server.vercel.app/review?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("userToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           logout();
@@ -26,7 +29,7 @@ const Review = () => {
           setReviewItem(data.data);
         }
       });
-  }, [user?.email,logout]);
+  }, [user?.email, logout]);
   const handleDelete = (id) => {
     fetch(`https://domestic-travel-server.vercel.app/review/${id}`, {
       method: "DELETE",
@@ -66,7 +69,7 @@ const Review = () => {
           </tbody>
         </table>
       </div>
-      <div className={`${reviewItem.length > 0 }  && "hidden"}`}>
+      <div className={`${reviewItem.length > 0}  && "hidden"}`}>
         <h1 className={`text-2xl font-serif text-center `}>
           Review are not found{" "}
         </h1>

@@ -16,33 +16,39 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
 const [loading,setLoading] = useState(true)
 const GoogleProvider = new GoogleAuthProvider()
-
+//..................... User Controlar..................//
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    setLoading(false)
+  });
+  return () => unsubscribe();
+}, [auth]);
+//................Google Login...............//
 const googlePopup= ()=>{
   return signInWithPopup(auth, GoogleProvider)
 }
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false)
-    });
-    return () => unsubscribe();
-  }, [auth]);
+//....................User Login.....................//
   const existUser = (email, password) => {
     setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
+  //.....................Create User...............//
   const createUser = (email, password) => {
     setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  //.................Update User Profile...............//
   const updateUserProfile = (name) => {
     setLoading(true)
     return updateProfile(auth.currentUser, name);
   };
+  //..................Log Out....................//
   const logout =()=>{
     localStorage.removeItem('userToken')
     return signOut(auth)
   }
+  //.............. Providing Data.................//
   const authInfo = {
     auth,
     user,

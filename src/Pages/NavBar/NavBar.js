@@ -5,45 +5,49 @@ import logo from "../../assests/logo/logo.png";
 import { AuthContext } from "../../layout/AuthProvider";
 const NavBar = () => {
   const { logout, user } = useContext(AuthContext);
-  const navigate =  useNavigate()
-  const handleLogOut = ()=>{
+  const navigate = useNavigate();
+  const handleLogOut = () => {
     logout()
-    .then(()=>{
-      toast.success('User LogOut Successfully')
-      navigate('/home')
-    })
-    .catch(err => console.log(err))
-  }
+      .then(() => {
+        toast.success("User LogOut Successfully");
+        navigate("/home");
+      })
+      .catch((err) => console.log(err));
+  };
   const navItem = (
     <>
       <li>
         <Link to="/home">Home</Link>
       </li>
-     <li>
-      <Link to='/addservice'>Add Service</Link>
-     </li>
+      <li>
+        <Link to="/addservice">Add Service</Link>
+      </li>
       <li>
         <Link to="/review">Review</Link>
       </li>
-       <li>
-        <Link to='/blogs'>Blogs</Link>
+      <li>
+        <Link to="/blogs">Blogs</Link>
       </li>
     </>
   );
-  const buttonItem = <>
-  {user?.uid ? (
-          <button className="btn btn-secondary" onClick={handleLogOut}>Log Out</button>
-        ) : (
-          <>
-            <button className="btn btn-primary mr-3 my-3">
-              <Link to="/signup">Sign Up</Link>
-            </button>
-            <button className="btn btn-primary">
-              <Link to="/login">Login</Link>
-            </button>
-          </>
-        )}
-  </>
+  const buttonItem = (
+    <>
+      {user?.uid ? (
+        <button className="btn btn-secondary" onClick={handleLogOut}>
+          Log Out
+        </button>
+      ) : (
+        <>
+          <button className="btn btn-primary mr-3 my-3">
+            <Link to="/signup">Sign Up</Link>
+          </button>
+          <button className="btn btn-primary">
+            <Link to="/login">Login</Link>
+          </button>
+        </>
+      )}
+    </>
+  );
   return (
     <div className="mx-auto px-10 navbar bg-slate-100 ">
       <div className="lg:navbar-start">
@@ -81,9 +85,7 @@ const NavBar = () => {
           {navItem}
         </ul>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        {buttonItem}
-      </div>
+      <div className="navbar-end hidden lg:flex">{buttonItem}</div>
     </div>
   );
 };

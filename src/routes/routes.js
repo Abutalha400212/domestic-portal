@@ -3,7 +3,7 @@ import Error from "../Error/Error";
 import Main from "../layout/Main";
 import AddService from "../Pages/Add Service/AddService";
 import Blogs from "../Pages/Blogs/Blogs";
-import Home from "../Pages/Home/Home/Home"
+import Home from "../Pages/Home/Home/Home";
 import Details from "../Pages/Home/Services/Details/Details";
 import Review from "../Pages/Review/Review";
 import ReviewUpdate from "../Pages/Review/ReviewUpdate/ReviewUpdate";
@@ -27,34 +27,49 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        loader:({params})=> fetch(`https://domestic-travel-server.vercel.app/details/${params.id}`),
-        element: <PrivateRoute><Details /></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(
+            `https://domestic-travel-server.vercel.app/details/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/review',
-        element:<PrivateRoute><Review/></PrivateRoute>
+        path: "/review",
+        element: (
+          <PrivateRoute>
+            <Review />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/login',
-        element:<Login/>
+        path: "/login",
+        element: <Login />,
       },
       {
-        path:'/signup',
-        element:<SignUp/>
+        path: "/signup",
+        element: <SignUp />,
       },
       {
-        path:'/addservice',
-        element:<PrivateRoute><AddService/></PrivateRoute>
+        path: "/addservice",
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/update/:id',
-        element:<ReviewUpdate></ReviewUpdate>
+        path: "/update/:id",
+        element: <ReviewUpdate></ReviewUpdate>,
       },
       {
-        path:'/blogs',
-        element:<Blogs/>
-      }
+        path: "/blogs",
+        element: <Blogs />,
+      },
     ],
-  }
+  },
 ]);
 export default router;

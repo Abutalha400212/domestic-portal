@@ -1,19 +1,21 @@
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../layout/AuthProvider';
+import React, { useContext } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../layout/AuthProvider";
 
-const PrivateRoute = ({children}) => {
-    const {user,loading} = useContext(AuthContext)
-    const location = useLocation()
-    if(loading){
-        return <div className="w-5/12 mx-auto">
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useContext(AuthContext);
+  const location = useLocation();
+  if (loading) {
+    return (
+      <div className="w-5/12 mx-auto">
         <progress className="progress w-full"></progress>
-        </div>
-    }
-    if(!user){
-        return <Navigate to='/login' state={{from:location}} replace></Navigate>
-    }
-    return children
+      </div>
+    );
+  }
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+  }
+  return children;
 };
 
 export default PrivateRoute;

@@ -22,13 +22,12 @@ const Login = () => {
         },
         body: JSON.stringify({ email: user.email }),
       })
-      .then(res => res.json())
-      .then((data) => {
-        navigate(from, { replace: true });
-        localStorage.setItem("userToken", data.token);
-        toast.success("Google Login Successfully");
-      })
-      
+        .then((res) => res.json())
+        .then((data) => {
+          navigate(from, { replace: true });
+          localStorage.setItem("userToken", data.token);
+          toast.success("Google Login Successfully");
+        });
     });
   };
 
