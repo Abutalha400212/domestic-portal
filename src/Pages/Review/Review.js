@@ -12,7 +12,7 @@ const Review = () => {
 
   useEffect(() => {
     fetch(
-      `https://domestic-travel-server.vercel.app/review?email=${user?.email}`,
+      `http://localhost:5000/review?email=${user?.email}`,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem("userToken")}`,
@@ -32,7 +32,7 @@ const Review = () => {
       });
   }, [user?.email, logout]);
   const handleDelete = (id) => {
-    fetch(`https://domestic-travel-server.vercel.app/review/${id}`, {
+    fetch(`http://localhost:5000/review/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -50,11 +50,11 @@ const Review = () => {
         <table className="table table-zebra w-full border-2 text-center">
           <thead>
             <tr>
-              <th>Place Photo</th>
-              <th>Name</th>
+              <th>Reviewer</th>
               <th>Email ID</th>
+              <th>Reviews</th>
               <th>Reviewed Time</th>
-              <th>Review Type</th>
+              <th>Ratings</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
@@ -63,7 +63,7 @@ const Review = () => {
             {reviewItem.map((review) => (
               <ReviewList
                 key={review._id}
-                review={review}
+                reviews={review}
                 handleDelete={handleDelete}
               />
             ))}

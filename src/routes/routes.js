@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         path: "/details/:id",
         loader: ({ params }) =>
           fetch(
-            `https://domestic-travel-server.vercel.app/details/${params.id}`
+            `http://localhost:5000/details/${params.id}`
           ),
         element: (
           <PrivateRoute>

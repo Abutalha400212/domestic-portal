@@ -26,7 +26,7 @@ const AddService = () => {
       description: description,
       days: parseInt(duration),
     };
-    fetch("https://domestic-travel-server.vercel.app/addservice", {
+    fetch("http://localhost:5000/addservice", {
       method: "POST",
       headers: {
         "content-type": "application/json",
