@@ -29,7 +29,7 @@ element:<Home/>
         path: "/details/:id",
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/details/${params.id}`
+            `https://domestic-travel-server.vercel.app/details/${params.id}`
           ),
         element: (
           <PrivateRoute>

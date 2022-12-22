@@ -10,7 +10,7 @@ const Review = () => {
   const [reviewItem, setReviewItem] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`, {
+    fetch(`https://domestic-travel-server.vercel.app/review?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("userToken")}`,
       },
@@ -28,7 +28,7 @@ const Review = () => {
       });
   }, [user?.email, logout]);
   const handleDelete = (reviews) => {
-    fetch(`http://localhost:5000/review/${reviews._id}`, {
+    fetch(`https://domestic-travel-server.vercel.app/review/${reviews._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

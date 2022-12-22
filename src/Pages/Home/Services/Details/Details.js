@@ -60,7 +60,7 @@ const Details = () => {
       date: datePiker,
       rating: type,
     };
-    fetch(`http://localhost:5000/review`, {
+    fetch(`https://domestic-travel-server.vercel.app/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,7 +77,7 @@ const Details = () => {
       .catch((err) => console.log(err));
   };
 useEffect(()=>{
-fetch('http://localhost:5000/reviews')
+fetch('https://domestic-travel-server.vercel.app/reviews')
 .then(res => res.json())
 .then(data => setReviews(data))
 },[])
@@ -125,7 +125,7 @@ fetch('http://localhost:5000/reviews')
             Add Your Review
           </h1>
           <form onSubmit={handleEvent} className=" grid grid-cols-1 gap-4 ">
-            <div className="flex  justify-center text-3xl">
+            <div  className="flex  justify-center text-3xl">
               {numberRatings.map((ratings) => (
                 <span
                   key={ratings.id}
@@ -157,7 +157,7 @@ fetch('http://localhost:5000/reviews')
               />
             </div>
           </form>
-          <div className="md:max-h-72 md:overflow-y-scroll md:p-10">
+          <div className="md:max-h-72 md:overflow-y-scroll md:p-10 ">
             {
               allReviews.map((reviews) =><AllReview reviews={reviews}/> )}
           </div>
