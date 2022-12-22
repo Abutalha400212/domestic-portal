@@ -2,15 +2,16 @@ import React from "react";
 import img from "../../assests/logo/logo.png";
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content mt-5">
+    <footer className="footer p-10 font-semibold text-base-content">
       <div>
-        <img className="w-32" src={img} alt="" />
+        <img className="w-28" src={img} alt="" />
         <p>
           DomesticTour Ltd.
           <br />
-          Providing reliable trip since 1992
+          Providing Reliable Trip Since 1992
         </p>
       </div>
+
       <div>
         <span className="footer-title">Services</span>
         <a href="/" className="link link-hover">

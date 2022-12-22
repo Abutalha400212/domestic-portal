@@ -45,54 +45,53 @@ const AddService = () => {
     console.log(addService);
   };
   return (
-    <div className="lg:w-9/12 mx-auto mt-4 bg-slate-200 p-10 rounded-3xl">
+    <div className="lg:w-9/12 mx-auto mt-4  p-10 rounded-3xl font-semibold">
       <h1 className="text-3xl font-semibold text-center mb-10">
         You Can Add a Service of Tour{" "}
       </h1>
       <form onSubmit={handleAddToService}>
-        <div className=" grid lg:grid-cols-2 gap-5">
-          <div className="form-control w-full">
-            <label className="input-group input-group-md">
+        <div className=" grid lg:grid-cols-2 gap-x-5 gap-y-3">
+          <div className="form-control w-full rounded-none">
+            <label className="">
               <span className="w-1/2">Name of Place</span>
               <input
                 type="text"
                 name="name"
                 required
                 placeholder="place name here"
-                className="input input-bordered input-md w-full"
+                className="input input-bordered input-md w-full rounded-none"
               />
             </label>
           </div>
           <div className="form-control w-full">
-            <label className="input-group input-group-md">
+            <label className="">
               <span className="w-1/2">Place Photo Url</span>
               <input
                 type="text"
                 name="photo"
                 required
                 placeholder="photo url here"
-                className="input input-bordered input-md w-full"
+                className="input input-bordered input-md w-full rounded-none"
               />
             </label>
           </div>
-          <div className="form-control">
-            <label className="input-group">
+          <div className="form-control rounded-none">
+            <label className="">
               <span className="w-52 capitalize">per person</span>
               <input
                 type="text"
                 name="price"
                 required
                 placeholder="10"
-                className="input input-bordered w-full"
+                className="input  w-full rounded-none"
               />
-              <span>USD</span>
             </label>
           </div>
           <div className="form-control">
-            <label className="input-group">
+            <label className="">
               <span>Description</span>
               <textarea
-                className="textarea textarea-bordered w-full"
+                className="textarea textarea-bordered w-full rounded-none"
                 name="description"
                 required
                 placeholder="Description"
@@ -100,10 +99,12 @@ const AddService = () => {
             </label>
           </div>
           <div className="form-control w-full">
-            <div className="input-group w-1/2">
+            <div className="">
+            <label className="">
+              <span>Select Preferable Review </span>
               <select
                 onChange={(e) => setRatings(e.target.value)}
-                className="select select-bordered w-full"
+                className="select select-bordered w-full rounded-none"
               >
                 <option disabled selected>
                   Ratings
@@ -112,17 +113,19 @@ const AddService = () => {
                 <option value={5}>Excellent</option>
                 <option value={1}>Bad</option>
               </select>
-              <button className="btn btn-outline" disabled>
-                Select One
-              </button>
+            </label>
+              
+              
             </div>
           </div>
           <div className="form-control w-full">
-            <div className="input-group w-1/2">
+            <div className="">
+            <label className="">
+              <span>Time Duration</span>
               <select
                 onChange={(e) => setDuration(e.target.value)}
                 name="duration"
-                className="select select-bordered w-full"
+                className="select select-bordered w-full rounded-none"
               >
                 <option disabled selected>
                   Duration
@@ -132,14 +135,13 @@ const AddService = () => {
                 <option value={30}>30</option>
                 <option value={5}>5</option>
               </select>
-              <button className="btn btn-outline" disabled>
-                Select One
-              </button>
+            </label>
+              
             </div>
           </div>
         </div>
         <div className="w-5/12 mx-auto my-4">
-          <button className="btn btn-secondary w-full  ">Add To Service</button>
+          <button className="btn btn-success text-white w-full rounded-none ">Add To Service</button>
         </div>
       </form>
     </div>

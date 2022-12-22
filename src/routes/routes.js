@@ -13,18 +13,18 @@ import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
+path:"/",
+element:<Home/>
+  },
+  {
+path:"/home",
+element:<Home/>
+  },
+  {
     path: "/",
     element: <Main />,
     errorElement: <Error />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/home",
-        element: <Home />,
-      },
       {
         path: "/details/:id",
         loader: ({ params }) =>

@@ -72,7 +72,7 @@ const Login = () => {
           type="email"
           placeholder="email"
           name="email"
-          className="input input-bordered "
+          className="input input-bordered rounded-none"
         />
       </div>
       <div className="form-control w-full">
@@ -83,7 +83,7 @@ const Login = () => {
           type="password"
           placeholder="password"
           name="password"
-          className="input input-bordered"
+          className="input input-bordered rounded-none"
         />
         <label className="label">
           <a href="/" className="label-text-alt link link-hover">
@@ -91,8 +91,8 @@ const Login = () => {
           </a>
         </label>
       </div>
-      <div className="form-control mt-6">
-        <button className="btn btn-primary">Login</button>
+      <div className="form-control mt-6 rounded-none">
+        <button className="btn btn-primary rounded-none">Login</button>
       </div>
       <span href="/" className="label-text-alt ">
         Don't have an account?{" "}
@@ -101,13 +101,13 @@ const Login = () => {
         </Link>
       </span>
       <div className="mt-3">
-        <h1 className="text-md font-mono text-center capitalize">
+        <h1 className="text-md font-mono text-center capitalize rounded-none">
           Sign in With Social
         </h1>
         <div className="text-2xl">
           <FaGoogle
             onClick={handleGoogleLogin}
-            className="w-full btn btn-square p-2 text-white"
+            className="w-full btn btn-square p-2 text-white rounded-none"
           />
         </div>
       </div>

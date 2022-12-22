@@ -33,15 +33,15 @@ const NavBar = () => {
   const buttonItem = (
     <>
       {user?.uid ? (
-        <button className="btn btn-secondary" onClick={handleLogOut}>
+        <button className="btn btn-primary btn-sm md:btn-md" onClick={handleLogOut}>
           Log Out
         </button>
       ) : (
         <>
-          <button className="btn btn-primary mr-3 my-3">
+          <button className="btn btn-primary mr-3 btn-sm md:btn-md">
             <Link to="/signup">Sign Up</Link>
           </button>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary btn-sm md:btn-md">
             <Link to="/login">Login</Link>
           </button>
         </>
@@ -49,7 +49,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="mx-auto px-10 navbar bg-slate-100 ">
+    <div className=" md:px-16 md:py-3 navbar">
       <div className="lg:navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,22 +70,21 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32 text-sm"
           >
             {navItem}
-            {buttonItem}
           </ul>
         </div>
         <Link to="/">
-          <img className="w-28" src={logo} alt="" />
+          <img className="md:w-28 w-16" src={logo} alt="" />
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 text-black font-semibold">
+      <div className="navbar-center hidden lg:flex ">
+        <ul className="menu menu-horizontal text-white text-center font-semibold">
           {navItem}
         </ul>
       </div>
-      <div className="navbar-end hidden lg:flex">{buttonItem}</div>
+      <div className="navbar-end w-[100%] md:w-[50%]">{buttonItem}</div>
     </div>
   );
 };

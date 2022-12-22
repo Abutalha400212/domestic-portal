@@ -16,7 +16,7 @@ const Services = () => {
       });
   }, [limit]);
   return (
-    <div className="mt-10">
+    <div className="mt-10 px-10">
       <div className="text-center mb-4 ">
         <p className="text-lg font-thin uppercase">choose your tour</p>
         <h1 className="text-4xl uppercase font-serif">Most popular tours</h1>

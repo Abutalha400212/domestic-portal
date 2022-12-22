@@ -4,8 +4,8 @@ import useHooks from "../../Hooks/useHooks";
 const Blogs = () => {
   useHooks("Blogs");
   return (
-    <div className="mt-5">
-      <div class=" bg-white border border-gray-200 p-3 rounded-lg shadow-md ">
+    <div className="mt-5 p-10">
+      <div class=" p-3 rounded-lg shadow-md shadow-white  ">
         <h2 className="text-3xl font-mono text-center">
           What is the Difference between SQL and NoSQL DataBase ?
         </h2>
@@ -17,7 +17,7 @@ const Blogs = () => {
           non-relational and generally do not use SQL.
         </div>
       </div>
-      <div class="my-3 bg-white border border-gray-200 p-3 rounded-lg shadow-md ">
+      <div class="my-3  p-3 rounded-lg shadow-md shadow-white ">
         <h2 className="text-3xl font-mono text-center ">
           What is JWT, and how does it work?
         </h2>
@@ -29,7 +29,7 @@ const Blogs = () => {
           Provider(IdP).
         </div>
       </div>
-      <div class="my-3 bg-white border border-gray-200 p-3 rounded-lg shadow-md ">
+      <div class="my-3  p-3 rounded-lg shadow-md shadow-white ">
         <h2 className="text-3xl font-mono text-center ">
           What is the difference between javascript and NodeJS?
         </h2>
@@ -41,7 +41,7 @@ const Blogs = () => {
           programming language.
         </div>
       </div>
-      <div class="my-3 bg-white border border-gray-200 p-3 rounded-lg shadow-md ">
+      <div class="my-3  p-3 rounded-lg shadow-md shadow-white ">
         <h2 className="text-3xl font-mono text-center ">
           How does NodeJS handle multiple requests at the same time?
         </h2>

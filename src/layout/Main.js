@@ -5,10 +5,10 @@ import Footer from "../Shared/Footer/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="bg-slate-400 min-h-screen">
       <NavBar />
       <Outlet />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

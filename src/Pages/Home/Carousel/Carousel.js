@@ -3,7 +3,7 @@ import { bannerData } from "../../../loader/CaroLoad";
 import CarouselLoader from "./CarouselLoader";
 const Carousel = () => {
   return (
-    <div className="carousel w-full relative mt-2">
+    <div className="carousel overflow-hidden relative w-full">
       {bannerData.map((banner) => (
         <CarouselLoader key={banner.id} banner={banner} />
       ))}
